@@ -4,5 +4,8 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/MirrorTestScene.unity
+    guid: dd094eb6f8eec6c4595b2ac1a81d5e7c
   m_configObjects: {}
