@@ -1,9 +1,10 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 [RequireComponent(typeof(CharacterController))]
-public class MovementController : MonoBehaviour
+public class MovementController : MonoBehaviourPun
 {
     #region Unity References
     [SerializeField, Range(0.0f, 1.0f)] private float myLerpFactor = 0.5f;
@@ -23,6 +24,11 @@ public class MovementController : MonoBehaviour
 
     private void Update()
     {
+        if (!photonView.IsMine)
+        {
+            return;
+        }
+
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");
 

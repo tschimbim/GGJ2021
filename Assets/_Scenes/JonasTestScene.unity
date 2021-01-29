@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2331ceeea2ec414288dbf75b4d08716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 4647471070960806280, guid: 2d7e72074cc80a346b5b64064bf9b06f,
+  PlayerPrefab: {fileID: 3774005871106391529, guid: 2f07705963fbc5e4685b20062f87a8c2,
     type: 3}
   host: 1
 --- !u!1 &1984730669
@@ -352,7 +352,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!81 &1984730670
 AudioListener:
   m_ObjectHideFlags: 0
@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f2331ceeea2ec414288dbf75b4d08716, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  PlayerPrefab: {fileID: 4647471070960806280, guid: 2d7e72074cc80a346b5b64064bf9b06f,
+  PlayerPrefab: {fileID: 3774005871106391529, guid: 2f07705963fbc5e4685b20062f87a8c2,
     type: 3}
   host: 0
 --- !u!1 &2024698425
