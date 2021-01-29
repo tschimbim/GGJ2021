@@ -24,7 +24,7 @@ public class MovementController : MonoBehaviourPun
 
     private void Update()
     {
-        if (!photonView.IsMine)
+        if (PhotonNetwork.IsConnected && !photonView.IsMine)
         {
             return;
         }
