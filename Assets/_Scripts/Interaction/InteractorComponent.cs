@@ -76,8 +76,9 @@ public class InteractorComponent : MonoBehaviour
         // Set it active to closest interactable
         myActiveInteractable = interactableList.OrderBy(interactable => (interactable.transform.position - transform.position).sqrMagnitude).First();
 
-        if (myOutlineTarget)
-            myActiveInteractable.GetComponent<Outline>().enabled = true;
+        Outline outline = myActiveInteractable.GetComponent<Outline>();
+        if (myOutlineTarget && !(outline is null))
+            outline.enabled = true;
     }
 }
 #endregion
