@@ -11,8 +11,18 @@ public class SingletonBase<T> : MonoBehaviour where T : SingletonBase<T>
     protected virtual void Awake()
     {
         if (instance != null && instance != this)
+        {
             Debug.LogWarningFormat("Multiple singletons detected. Destroying second singleton instance with name {0}", gameObject.name);
+            Destroy(this);
+            return;
+        }
 
         instance = (T)this;
+    }
+
+    protected virtual void OnDestroy()
+    {
+        if (instance == this)
+            instance = null;
     }
 }
