@@ -10,9 +10,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     private string gameVersion = "1";
 
-    private bool isMpGame = false;
-
-    private bool inRoom = false;
+    private NetworkState State = NetworkState.Offline;
 
     private void OnEnable()
     {
@@ -27,11 +25,6 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     private void Awake()
     {
         DontDestroyOnLoad(gameObject);
-    }
-
-    public bool IsMpGame()
-    {
-        return isMpGame;
     }
 
     public bool IsMpReady()
@@ -53,57 +46,75 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             return;
         }
 
-        isMpGame = true;
-
         PhotonNetwork.AutomaticallySyncScene = true;
         PhotonNetwork.ConnectUsingSettings();
         PhotonNetwork.GameVersion = gameVersion;
 
+
+        State = NetworkState.Connecting;
         Debug.Log("... connecting ...");
     }
 
     public override void OnConnectedToMaster()
     {
         Debug.Log("... Connected!");
+        State = NetworkState.Online;
         JoinRoom();
     }
 
     public bool IsInRoom()
     {
-        return inRoom;
+        return State == NetworkState.InRoom;
+    }
+
+    public NetworkState GetState()
+    {
+        return State;
     }
 
     public void JoinRoom()
     {
-        Debug.Log("Join Room ...");
-
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
-        roomOptions.IsVisible = true;
-        PhotonNetwork.JoinOrCreateRoom("TestRoom", roomOptions, TypedLobby.Default);
-        // PhotonNetwork.CreateRoom("TestRoom");
+        Debug.Log("Join Random Room ...");
+        State = NetworkState.SearchingRoom;
+        PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnCreatedRoom()
     {
-        inRoom = true;
+        State = NetworkState.InRoom;
         Debug.Log("... Room created!");
     }
 
     public override void OnJoinedRoom()
     {
-        inRoom = true;
+        State = NetworkState.InRoom;
         Debug.Log("... Room joined!");
     }
 
     public override void OnCreateRoomFailed(short returnCode, string message)
     {
+        State = NetworkState.Failed;
         Debug.Log("... Room creation failed!");
     }
 
     public override void OnJoinRoomFailed(short returnCode, string message)
     {
+        State = NetworkState.Failed;
         Debug.Log("... Room join failed!");
+    }
+
+    public override void OnJoinRandomFailed(short returnCode, string message)
+    {
+        Debug.Log("... Random Room join failed.");
+        Debug.Log("Create Random Room ...");
+
+        State = NetworkState.CreatingRoom;
+
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = 2;
+        roomOptions.IsVisible = true;
+
+        PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default);    //< create room, let server decide for the name
     }
 
     public void Disconnect()
@@ -115,6 +126,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         }
 
         PhotonNetwork.Disconnect();
+        State = NetworkState.Offline;
         Debug.Log("... disconnecting ...");
     }
 
