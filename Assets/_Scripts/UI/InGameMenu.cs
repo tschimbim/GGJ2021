@@ -17,14 +17,18 @@ public class InGameMenu : SingletonBase<InGameMenu>
     public GameObject myInGameUI = default;
     public GameObject myPostGameUI = default;
 
-    public EmoteData[] myEmoteData = default;
+    public EmoteData[] myEmoteDataSender = default;
+    public EmoteData[] myEmoteDataReceiver = default;
     public UIEmoteReceiverScript myEmoteReceiverScript = default;
 
     protected override void Awake()
     {
         base.Awake();
 
-        foreach (EmoteData data in myEmoteData)
+        foreach (EmoteData data in myEmoteDataSender)
+            emoteDict.Add(data.emote, data.sprite);
+
+        foreach (EmoteData data in myEmoteDataReceiver)
             emoteDict.Add(data.emote, data.sprite);
     }
 
