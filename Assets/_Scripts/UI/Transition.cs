@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class Transition : MonoBehaviour
 {
     public GameObject TransitionImage;
+    public bool TransitionInOnStart = false;
+    public float TransitionInDuration = 0.6f;
+
 
     private bool transitionActive = false;
     private float startPos = 0;
@@ -16,7 +19,10 @@ public class Transition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (TransitionInOnStart)
+        {
+            StartTransition(true, TransitionInDuration);
+        }
     }
 
     // Update is called once per frame
@@ -28,8 +34,14 @@ public class Transition : MonoBehaviour
         }
 
         elapsedTime += Time.deltaTime;
-        float pos = Mathf.Lerp(startPos, endPos, elapsedTime / transitionDuration);
-        SetImagePos(pos);
+        float t = Mathf.Min(1.0f, elapsedTime / transitionDuration);
+        float posX = Mathf.Lerp(startPos, endPos, t);
+        SetImagePos(posX);
+
+        if (elapsedTime > transitionDuration)
+        {
+            transitionActive = false;
+        }
     }
 
     public void StartTransition(bool transitionIn, float duration)
@@ -37,6 +49,8 @@ public class Transition : MonoBehaviour
         startPos = CalculateStartPos(transitionIn);
         endPos = CalculateEndPos(transitionIn);
         transitionDuration = duration;
+        elapsedTime = 0;
+        transitionActive = true;
 
         SetImagePos(startPos);
         TransitionImage.SetActive(true);
@@ -44,9 +58,9 @@ public class Transition : MonoBehaviour
 
     private void SetImagePos(float posX)
     {
-        Vector2 pos = TransitionImage.transform.position;
+        Vector2 pos = TransitionImage.transform.localPosition;
         pos.x = posX;
-        TransitionImage.transform.position = pos;
+        TransitionImage.transform.localPosition = pos;
     }
 
     private float CalculateStartPos(bool transitionIn)
@@ -66,7 +80,7 @@ public class Transition : MonoBehaviour
         if (transitionIn)
         {
             // make this display size dependent?
-            return 2000.0f;
+            return 2500.0f;
         }
         else
         {
