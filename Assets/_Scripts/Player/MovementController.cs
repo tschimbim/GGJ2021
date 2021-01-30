@@ -12,7 +12,6 @@ public class MovementController : MonoBehaviourPun
     #endregion
 
     #region Properties - Public
-    public bool isGhost => photonView.Owner == PhotonNetwork.MasterClient;
     #endregion
 
     #region Variables - Private
@@ -27,16 +26,6 @@ public class MovementController : MonoBehaviourPun
 
     private void Start()
     {
-        if (isGhost)
-        {
-            if (!photonView.AmOwner)
-            {
-                foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
-                    renderer.enabled = false;
-            }
-
-            gameObject.layer = LayerMask.NameToLayer("Ghost");
-        }
     }
 
     private void Update()

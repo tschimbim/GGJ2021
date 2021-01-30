@@ -181,6 +181,7 @@ GameObject:
   - component: {fileID: -3957530231604060480}
   - component: {fileID: -273881803030991147}
   - component: {fileID: 2170381109126533478}
+  - component: {fileID: 806310137753902567}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -234,7 +235,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a10a3f86b161f754a9adf9457802d4b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  myLerpFactor: 0.5
   myMovementSpeed: 5
   myRotationSpeed: 100
 --- !u!114 &8953968475861929429
@@ -380,3 +380,17 @@ MonoBehaviour:
   precomputeOutline: 0
   bakeKeys: []
   bakeValues: []
+--- !u!114 &806310137753902567
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774005871106391529}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9c5ba09cad167f41b131b6e1cf1b618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mySeekerMaterial: {fileID: 2100000, guid: 3487bb8e569e9c54f9ec0fc126111bf3, type: 2}
+  myTargetMaterial: {fileID: 2100000, guid: 72a171f7495f3854083d6ee0ef6b5a18, type: 2}

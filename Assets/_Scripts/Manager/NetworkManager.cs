@@ -148,8 +148,5 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     void IOnEventCallback.OnEvent(EventData photonEvent)
     {
         Debug.Log("Received event " + photonEvent.Code);
-
-        switch (photonEvent.Code)
-        { }
     }
 }

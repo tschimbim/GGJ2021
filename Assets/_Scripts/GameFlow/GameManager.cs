@@ -27,6 +27,8 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     /// The player that won the game
     /// </summary>
     public GameObject winningPlayer => myWinningPlayerViewId >= 0 ? PhotonNetwork.GetPhotonView(myWinningPlayerViewId).gameObject : null;
+
+    public bool localIsGhost => PhotonNetwork.IsMasterClient;
     #endregion
 
     #region Unity Callbacks
