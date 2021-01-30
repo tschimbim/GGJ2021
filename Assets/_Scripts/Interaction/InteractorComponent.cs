@@ -15,10 +15,6 @@ public class InteractorComponent : MonoBehaviourPun
     private InteractableComponent myActiveInteractable = default;
     #endregion
 
-    #region Events
-    public event Action onInteractableNearby;
-    #endregion
-
     #region Unity References
     [SerializeField] private KeyCode myInteractionKeyCode = KeyCode.E;
     [SerializeField] private bool myOutlineTarget = true;
@@ -87,9 +83,9 @@ public class InteractorComponent : MonoBehaviourPun
 
     private void Interact(InteractableComponent interactable)
     {
-        if (interactable.tag == "Player")
+        if (interactable.tag == "Bot" && interactable.gameObject == GameManager.instance.targetBot)
         {
-            GameManager.instance.photonView.RPC(nameof(GameManager.RegisterPlayerCatch), RpcTarget.MasterClient, photonView.ViewID);
+            GameManager.instance.photonView.RPC(nameof(GameManager.RegisterBotCatch), RpcTarget.MasterClient, photonView.ViewID);
         }
     }
 }

@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 2537004888680658187}
   - component: {fileID: 2537004888680658186}
   m_Layer: 5
-  m_Name: MusicCanvas 1
+  m_Name: MusicCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -482,4 +482,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LoudSprite: {fileID: 21300000, guid: f0ebfcabff228c94ba52493e5fec0337, type: 3}
   MutedSprite: {fileID: 21300000, guid: a50dbdcaef4c9c3458b7860e033f3ede, type: 3}
+  TestObject: {fileID: 0}
   MuteImage: {fileID: 2537004888110697100}
+  EmoteDefinitions:
+  - Emote: 0
+    Clips:
+    - {fileID: 8300000, guid: a88694859559ac74993b576fa2f09263, type: 3}
+  - Emote: 1
+    Clips:
+    - {fileID: 8300000, guid: 813a046d5ed927c4ca363fc21ecb6f3b, type: 3}
+  - Emote: 2
+    Clips:
+    - {fileID: 8300000, guid: 0ef1e23b8ed704f48a7f97b63a29a426, type: 3}
