@@ -15,10 +15,5 @@ public class InteractableComponent : MonoBehaviour
     {
         GetComponent<Outline>().enabled = false;
     }
-
-    public void Interact(InteractorComponent interactor)
-    {
-
-    }
     #endregion
 }

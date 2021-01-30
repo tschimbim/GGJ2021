@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 using ExitGames.Client.Photon;
 using Photon.Pun;
@@ -12,13 +10,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     private NetworkState State = NetworkState.Offline;
 
-    private void OnEnable()
+    public override void OnEnable()
     {
+        base.OnEnable();
+
         PhotonNetwork.AddCallbackTarget(this);
     }
 
-    private void OnDisable()
+    public override void OnDisable()
     {
+        base.OnDisable();
+
         PhotonNetwork.RemoveCallbackTarget(this);
     }
 
@@ -141,16 +143,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Connect();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-    }
-
-    public void OnEvent(EventData photonEvent)
+    void IOnEventCallback.OnEvent(EventData photonEvent)
     {
         Debug.Log("Received event " + photonEvent.Code);
 
         switch (photonEvent.Code)
-        {}
+        { }
     }
 }
