@@ -1,10 +1,11 @@
-﻿using System.Collections;
+﻿using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class BotScript : MonoBehaviour
+public class BotScript : MonoBehaviourPun
 {
     #region Unity References
     [SerializeField] private float myDesiredWaypointDist = 0.0f;
@@ -12,8 +13,6 @@ public class BotScript : MonoBehaviour
 
     #region Variables - Private
     private NavMeshAgent myAgent = null;
-
-    private Vector3 currentTargetPos = default;
     #endregion
 
     #region Unity Callbacks
@@ -24,11 +23,17 @@ public class BotScript : MonoBehaviour
 
     private void Start()
     {
+        if (PhotonNetwork.IsMasterClient)
+            photonView.TransferOwnership(PhotonNetwork.LocalPlayer);
+
         FindNewTarget();
     }
 
     private void Update()
     {
+        if (photonView.Controller != PhotonNetwork.LocalPlayer)
+            return;
+
         if (!myAgent.hasPath && !myAgent.pathPending && myAgent.pathStatus == NavMeshPathStatus.PathComplete)
             FindNewTarget();
     }
@@ -37,6 +42,9 @@ public class BotScript : MonoBehaviour
     #region Methods - Public
     public void FindNewTarget()
     {
+        if (photonView.Controller != PhotonNetwork.LocalPlayer)
+            return;
+
         float angle = Random.value * 360.0f;
         NavMesh.SamplePosition(transform.position + Quaternion.AngleAxis(angle, Vector3.up) * Vector3.forward * myDesiredWaypointDist, out NavMeshHit hit, float.MaxValue, NavMesh.AllAreas);
 
