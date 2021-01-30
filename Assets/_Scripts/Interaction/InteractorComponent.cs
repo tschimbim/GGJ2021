@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Photon.Pun;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
-public class InteractorComponent : MonoBehaviour
+public class InteractorComponent : MonoBehaviourPun
 {
     #region Properties - Public
     /// <summary>
@@ -26,12 +27,15 @@ public class InteractorComponent : MonoBehaviour
     #region Unity Callbacks
     private void Update()
     {
+        if (!photonView.IsMine)
+            return;
+
         UpdateActiveInteractable();
 
         if (!(myActiveInteractable is null))
         {
             if (Input.GetKeyDown(myInteractionKeyCode))
-                myActiveInteractable.Interact(this);
+                Interact(myActiveInteractable);
         }
     }
 
@@ -79,6 +83,14 @@ public class InteractorComponent : MonoBehaviour
         Outline outline = myActiveInteractable.GetComponent<Outline>();
         if (myOutlineTarget && !(outline is null))
             outline.enabled = true;
+    }
+
+    private void Interact(InteractableComponent interactable)
+    {
+        if (interactable.tag == "Player")
+        {
+            GameManager.instance.photonView.RPC(nameof(GameManager.RegisterPlayerCatch), RpcTarget.MasterClient, photonView.ViewID);
+        }
     }
 }
 #endregion
