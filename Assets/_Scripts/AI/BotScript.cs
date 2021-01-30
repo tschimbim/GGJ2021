@@ -12,8 +12,6 @@ public class BotScript : MonoBehaviour
 
     #region Variables - Private
     private NavMeshAgent myAgent = null;
-
-    private Vector3 currentTargetPos = default;
     #endregion
 
     #region Unity Callbacks

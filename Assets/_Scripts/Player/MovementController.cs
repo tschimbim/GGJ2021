@@ -7,9 +7,12 @@ using Photon.Pun;
 public class MovementController : MonoBehaviourPun
 {
     #region Unity References
-    [SerializeField, Range(0.0f, 1.0f)] private float myLerpFactor = 0.5f;
     [SerializeField] private float myMovementSpeed = 5.0f;
     [SerializeField] private float myRotationSpeed = 60.0f;
+    #endregion
+
+    #region Properties - Public
+    public bool isGhost => photonView.Owner == PhotonNetwork.MasterClient;
     #endregion
 
     #region Variables - Private
@@ -20,6 +23,20 @@ public class MovementController : MonoBehaviourPun
     private void Awake()
     {
         myCharController = GetComponent<CharacterController>();
+    }
+
+    private void Start()
+    {
+        if (isGhost)
+        {
+            if (!photonView.AmOwner)
+            {
+                foreach (Renderer renderer in GetComponentsInChildren<Renderer>())
+                    renderer.enabled = false;
+            }
+
+            gameObject.layer = LayerMask.NameToLayer("Ghost");
+        }
     }
 
     private void Update()
