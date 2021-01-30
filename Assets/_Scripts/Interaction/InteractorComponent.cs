@@ -15,10 +15,6 @@ public class InteractorComponent : MonoBehaviourPun
     private InteractableComponent myActiveInteractable = default;
     #endregion
 
-    #region Events
-    public event Action onInteractableNearby;
-    #endregion
-
     #region Unity References
     [SerializeField] private KeyCode myInteractionKeyCode = KeyCode.E;
     [SerializeField] private bool myOutlineTarget = true;
