@@ -6,6 +6,8 @@ using Photon.Realtime;
 
 public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
+    public byte maxPlayersForRoom = 2;
+
     private string gameVersion = "1";
 
     private NetworkState State = NetworkState.Offline;
@@ -31,7 +33,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
     public bool IsMpReady()
     {
-        return PhotonNetwork.PlayerList.Length == 2;
+        return PhotonNetwork.PlayerList.Length == maxPlayersForRoom;
     }
 
     public bool IsHost()
@@ -113,7 +115,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         State = NetworkState.CreatingRoom;
 
         RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = 2;
+        roomOptions.MaxPlayers = maxPlayersForRoom;
         roomOptions.IsVisible = true;
 
         PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default);    //< create room, let server decide for the name
