@@ -17,7 +17,6 @@ public class GhostScript : MonoBehaviourPun
     #endregion
 
     #region Unity Callbacks
-
     // Start is called before the first frame update
     void Start()
     {
@@ -39,11 +38,12 @@ public class GhostScript : MonoBehaviourPun
             return;
         }
 
-        otherPlayer = FindObjectsOfType<GhostScript>().First(ghostScript => !ghostScript.isGhost).gameObject;
+        otherPlayer = GameObject.FindGameObjectsWithTag("Player").First(go => go.GetPhotonView().Owner != PhotonNetwork.MasterClient);
         otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
 
         target = FindObjectsOfType<BotScript>().RandomElement().gameObject;
         target.GetComponentInChildren<Renderer>().material = myTargetMaterial;
+        GameManager.instance.photonView.RPC(nameof(GameManager.SetTargetBot), RpcTarget.All, target.GetPhotonView().ViewID);
     }
     #endregion
 }

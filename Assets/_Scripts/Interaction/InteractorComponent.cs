@@ -83,9 +83,9 @@ public class InteractorComponent : MonoBehaviourPun
 
     private void Interact(InteractableComponent interactable)
     {
-        if (interactable.tag == "Player")
+        if (interactable.tag == "Bot" && interactable.gameObject == GameManager.instance.targetBot)
         {
-            GameManager.instance.photonView.RPC(nameof(GameManager.RegisterPlayerCatch), RpcTarget.MasterClient, photonView.ViewID);
+            GameManager.instance.photonView.RPC(nameof(GameManager.RegisterBotCatch), RpcTarget.MasterClient, photonView.ViewID);
         }
     }
 }
