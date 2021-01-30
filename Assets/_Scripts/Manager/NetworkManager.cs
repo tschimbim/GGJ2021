@@ -131,11 +131,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         roomOptions.MaxPlayers = maxPlayersForRoom;
         roomOptions.IsVisible = true;
 
-#if UNITY_EDITOR
         PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
-#else
-        PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default);    //< create room, let server decide for the name
-#endif
     }
 
     public void Disconnect()

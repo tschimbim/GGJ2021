@@ -1,14 +1,36 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
 public class InGameMenu : SingletonBase<InGameMenu>
 {
+    [System.Serializable]
+    public class EmoteData
+    {
+        public Emote emote;
+        public Sprite sprite;
+    }
+
+    public Dictionary<Emote, Sprite> emoteDict { get; private set; } = new Dictionary<Emote, Sprite>();
+
     public GameObject myPreGameUI = default;
     public GameObject myInGameUI = default;
     public GameObject myPostGameUI = default;
 
+    public EmoteData[] myEmoteData = default;
+    public UIEmoteReceiverScript myEmoteReceiverScript = default;
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        foreach (EmoteData data in myEmoteData)
+            emoteDict.Add(data.emote, data.sprite);
+    }
+
     private void Start()
     {
-        ShowUI((GameState)(-1));
+        ShowUI(GameState.PreGame);
     }
 
     public void ShowUI(GameState gameState)
@@ -17,4 +39,7 @@ public class InGameMenu : SingletonBase<InGameMenu>
         myInGameUI.SetActive(gameState == GameState.InGame);
         myPostGameUI.SetActive(gameState == GameState.PostGame);
     }
+
+    public void PushEmote(Emote emote) => myEmoteReceiverScript.PushEmote(emote);
+
 }
