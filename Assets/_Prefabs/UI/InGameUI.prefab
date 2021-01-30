@@ -117,6 +117,14 @@ MonoBehaviour:
   myPreGameUI: {fileID: 1465377648847122631}
   myInGameUI: {fileID: 1465377648625775496}
   myPostGameUI: {fileID: 1465377650139246882}
+  myEmoteData:
+  - emote: 0
+    sprite: {fileID: 21300000, guid: de5441b58b1d282469765b8028c55564, type: 3}
+  - emote: 1
+    sprite: {fileID: 21300000, guid: 5ab758cfe57dff349907c14342b50c03, type: 3}
+  - emote: 2
+    sprite: {fileID: 21300000, guid: 8bd6c5f7e36d75c45a35f4027dd78521, type: 3}
+  myEmoteReceiverScript: {fileID: 5415162996043786501}
 --- !u!1 &1465377648625775496
 GameObject:
   m_ObjectHideFlags: 0
@@ -145,6 +153,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1465377649938940956}
+  - {fileID: 3981189421166596147}
+  - {fileID: 2171282847924092511}
   m_Father: {fileID: 1465377648444098240}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -223,11 +233,11 @@ RectTransform:
   m_Father: {fileID: 1465377648625775499}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 509}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!222 &1465377649938940928
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -262,7 +272,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 5
     m_MaxSize: 75
-    m_Alignment: 0
+    m_Alignment: 7
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -332,6 +342,81 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &2401164534730687739
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3981189421166596147}
+  - component: {fileID: 7356500339345626437}
+  - component: {fileID: 3881783808576645385}
+  m_Layer: 5
+  m_Name: Emotes_Sender
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3981189421166596147
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401164534730687739}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1465377648625775499}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 758.9, y: -251.76}
+  m_SizeDelta: {x: -1517.89, y: -503.51068}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7356500339345626437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401164534730687739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 8
+  m_StartCorner: 3
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 0
+  m_ConstraintCount: 2
+--- !u!114 &3881783808576645385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2401164534730687739}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9dac1c6a77ec554f9e2ca9e128ed1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEmoteButtonPrefab: {fileID: 5204889324260309387, guid: 4b2a52e36d35c2249a30bc849095d769,
+    type: 3}
 --- !u!1 &5713202288446581902
 GameObject:
   m_ObjectHideFlags: 0
@@ -438,6 +523,82 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 267959a456732834589cc77b03226e1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &6350499389523815099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2171282847924092511}
+  - component: {fileID: 6741944852700113188}
+  - component: {fileID: 5415162996043786501}
+  m_Layer: 5
+  m_Name: Emotes_Receiver
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2171282847924092511
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350499389523815099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1465377648625775499}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 1, y: 1}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -49.800293, y: -355.8}
+  m_SizeDelta: {x: 99.64392, y: 711.65094}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &6741944852700113188
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350499389523815099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a8695521f0d02e499659fee002a26c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 2
+  m_StartCorner: 1
+  m_StartAxis: 0
+  m_CellSize: {x: 100, y: 100}
+  m_Spacing: {x: 0, y: 0}
+  m_Constraint: 2
+  m_ConstraintCount: 5
+--- !u!114 &5415162996043786501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6350499389523815099}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db5e0e1ecf7f4bf44a06907d86a09734, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myEmoteIconPrefab: {fileID: 3796988342748502451, guid: e09b7d40e531e654db78ab1e660cce15,
+    type: 3}
+  myDestroyIconDelay: 3
 --- !u!1 &6488364544550656197
 GameObject:
   m_ObjectHideFlags: 0

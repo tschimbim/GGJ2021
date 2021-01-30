@@ -31,9 +31,10 @@ public class MovementController : MonoBehaviourPun
     private void Update()
     {
         if (PhotonNetwork.IsConnected && !photonView.IsMine)
-        {
             return;
-        }
+
+        if (GameManager.instance.gameState != GameState.InGame)
+            return;
 
         float hor = Input.GetAxis("Horizontal");
         float ver = Input.GetAxis("Vertical");

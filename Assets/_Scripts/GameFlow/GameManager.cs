@@ -1,6 +1,4 @@
 ﻿using Photon.Pun;
-using System;
-using System.Linq;
 using UnityEngine;
 
 public enum GameState
@@ -18,10 +16,20 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     /// The amount of time for preparation left before the game actually starts
     /// </summary>
     public float pregameCooldown => myPregameCooldown;
+
+    [PunRPC]
+    public void OnEmoteSent(Emote emote)
+    {
+        InGameMenu.instance.PushEmote(emote);
+        MusicManager.s_Instance.TryPlayEmote(new EmoteRequest() { Emote = emote, OnOffbeat = false, PlayerID = PhotonNetwork.IsMasterClient ? 0 : 1 });
+    }
+
     /// <summary>
     /// The time left until the game is over
     /// </summary>
     public float ingameTimeLeft => myIngameTimeLeft;
+
+    public GameState gameState { get; private set; } = GameState.MainMenu;
 
     /// <summary>
     /// The player that won the game
@@ -36,12 +44,12 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     #region Unity Callbacks
     void Start()
     {
-        OnGameStateChange(myGameState, GameState.PreGame);
+        OnGameStateChange(gameState, GameState.PreGame);
     }
 
     private void Update()
     {
-        switch (myGameState)
+        switch (gameState)
         {
             case GameState.MainMenu: UpdateMainMenu(); break;
             case GameState.PreGame: UpdatePreGame(); break;
@@ -138,7 +146,7 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
         }
     }
 
-    private void SetGameState(GameState gameState) => SetGameState(myGameState, gameState);
+    private void SetGameState(GameState gameState) => SetGameState(this.gameState, gameState);
     private void SetGameState(GameState prevGameState, GameState nextGameState)
     {
         photonView.RPC(nameof(OnGameStateChange), RpcTarget.All, prevGameState, nextGameState);
@@ -148,7 +156,7 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     private void OnGameStateChange(GameState prevGameState, GameState nextGameState)
     {
         Debug.LogFormat("Game state change: {0} -> {1}", prevGameState.ToString(), nextGameState.ToString());
-        myGameState = nextGameState;
+        gameState = nextGameState;
 
         switch (prevGameState)
         {
@@ -175,6 +183,7 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
             stream.SendNext(myIngameTimeLeft);
             stream.SendNext(myPostGameTimeLeft);
             stream.SendNext(myPreGameStartedTimestamp);
+            stream.SendNext(myPregameCooldown);
             stream.SendNext(myGameStartedTimestamp);
             stream.SendNext(myWinningPlayerViewId);
         }
@@ -184,6 +193,7 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
             myIngameTimeLeft = (float)stream.ReceiveNext();
             myPostGameTimeLeft = (float)stream.ReceiveNext();
             myPreGameStartedTimestamp = (float)stream.ReceiveNext();
+            myPregameCooldown = (float)stream.ReceiveNext();
             myGameStartedTimestamp = (float)stream.ReceiveNext();
             myWinningPlayerViewId = (int)stream.ReceiveNext();
         }
@@ -207,8 +217,6 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     private float myIngameTimeLeft = 0.0f;
 
     public float myPostGameTimeLeft = 0.0f;
-
-    private GameState myGameState = GameState.MainMenu;
 
     private float myPreGameStartedTimestamp = 0.0f;
     private float myGameStartedTimestamp = 0.0f;
