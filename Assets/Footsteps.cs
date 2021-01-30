@@ -43,7 +43,8 @@ public class Footsteps : MonoBehaviour
 		}
 
 		
-		float botFactor = m_IsPlayer ? 1.0f : Mathf.Lerp(0.8f, 1.1f, ((GetInstanceID() % 97) / 97.0f));
+		float random = (Mathf.Abs(GetInstanceID()) % 97.0f) / 97.0f;
+		float botFactor = m_IsPlayer ? 1.0f : Mathf.Lerp(0.8f, 1.1f, random);
 
 		int lastHalfSecond = (int) ((m_LastUpdate - preDelay) * botFactor * 2.0f);
 		int curHalfSecond  = (int) ((MusicManager.s_Instance.GetMusicTime() - preDelay) * botFactor * 2.0f);

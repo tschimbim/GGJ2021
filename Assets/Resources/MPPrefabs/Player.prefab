@@ -434,6 +434,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4545300755572631379}
     m_Modifications:
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: m_Volume
+      value: 0.366
+      objectReference: {fileID: 0}
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: panLevelCustomCurve.m_Curve.Array.data[0].value
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1453993920777532876, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: m_IsPlayer
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6073752844191694365, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
         type: 3}
       propertyPath: m_Name
