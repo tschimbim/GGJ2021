@@ -184,7 +184,6 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     #region Unity References
     [SerializeField] private int myPreGameCooldown = 3;
     [SerializeField] private int myGameDuration = 90;
-    [SerializeField] private int myPostGameCooldown = 10;
     #endregion
 
     #region Variables
