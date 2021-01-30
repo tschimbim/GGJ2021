@@ -214,6 +214,7 @@ GameObject:
   - component: {fileID: -273881803030991147}
   - component: {fileID: 2170381109126533478}
   - component: {fileID: 806310137753902567}
+  - component: {fileID: 3594969065352701629}
   m_Layer: 9
   m_Name: Player
   m_TagString: Player
@@ -395,6 +396,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed76cede4446d294783c4ba3ad88ebbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TriggersEmote: 0
+  InteractionEmote: 0
 --- !u!114 &2170381109126533478
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -427,6 +430,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySeekerMaterial: {fileID: 2100000, guid: 3487bb8e569e9c54f9ec0fc126111bf3, type: 2}
   myTargetMaterial: {fileID: 2100000, guid: 72a171f7495f3854083d6ee0ef6b5a18, type: 2}
+--- !u!54 &3594969065352701629
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3774005871106391529}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &3250172494598702086
 PrefabInstance:
   m_ObjectHideFlags: 0

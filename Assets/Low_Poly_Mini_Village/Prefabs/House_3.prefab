@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33619631650338728}
   - component: {fileID: 23958562408303124}
   - component: {fileID: 64519014113094650}
+  - component: {fileID: 7353539322685478454}
+  - component: {fileID: 513689154741505876}
   m_Layer: 0
   m_Name: House_3
   m_TagString: Untagged
@@ -95,6 +97,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: 4a57effc7e9c3944d927e84e82411058, type: 3}
+--- !u!114 &7353539322685478454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601759664563310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &513689154741505876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1601759664563310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed76cede4446d294783c4ba3ad88ebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggersEmote: 1
+  InteractionEmote: 16
 --- !u!1 &8914566678635303941
 GameObject:
   m_ObjectHideFlags: 0
