@@ -68,6 +68,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   myPreGameCooldown: 3
-  myGameDuration: 90
-  myPostGameCooldown: 5
+  myGameDuration: 900
   myPostGameTimeLeft: 5

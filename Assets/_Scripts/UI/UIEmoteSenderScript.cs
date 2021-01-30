@@ -8,13 +8,11 @@ public class UIEmoteSenderScript : MonoBehaviour
     private void Start()
     {
         FillEmoteList();
-
-        gameObject.SetActive(GameManager.instance.localIsGhost);
     }
 
     public void FillEmoteList()
     {
-        foreach (InGameMenu.EmoteData data in InGameMenu.instance.myEmoteData)
+        foreach (InGameMenu.EmoteData data in (GameManager.instance.localIsGhost ? InGameMenu.instance.myEmoteDataSender : InGameMenu.instance.myEmoteDataReceiver))
         {
             EmoteButtonScript emoteButton = Instantiate(myEmoteButtonPrefab, transform);
             emoteButton.SetEmote(data.emote, data.sprite);
