@@ -124,10 +124,6 @@ public class MusicManager : MonoBehaviour
 
 	void DoTest()
 	{
-		if (!TestObject)
-		{
-			return;
-		}
 
 		if (Input.GetKeyDown(KeyCode.Alpha1))
 		{
@@ -142,6 +138,11 @@ public class MusicManager : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
 			TryPlayEmote(new EmoteRequest(){ Emote = Emote.What,  OnOffbeat = false, PlayerID = 1 } );
+		}
+
+		if (!TestObject)
+		{
+			return;
 		}
 
 		float timeSinceStart = GetMusicTime();
