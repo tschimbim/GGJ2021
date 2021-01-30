@@ -5,10 +5,34 @@ using UnityEngine.UI;
 
 public enum Emote
 {
+	// Nature
+	FlowerP,
+	FlowerR,
+	FlowerW,
+	FlowerY,
 	YellowTree,
-	Fence,
+	Mushroom,
+	Rock,
 
-	What
+	// Props
+	Barrel, 
+	Campfire,
+	Well,
+	Fence,
+	Pole,
+	Signpost,
+	Tent,
+	Toilet,
+
+	// Buildings
+	Church,
+	House,
+
+	// Emotions
+	EmoteConfused,
+	EmoteAngry,
+	EmoteIdea,
+	EmoteLol
 }
 
 [System.Serializable]
@@ -139,7 +163,7 @@ public class MusicManager : MonoBehaviour
 
 		if (Input.GetKeyDown(KeyCode.Alpha3))
 		{
-			TryPlayEmote(new EmoteRequest(){ Emote = Emote.What,  OnOffbeat = false, PlayerID = 1 } );
+			TryPlayEmote(new EmoteRequest(){ Emote = Emote.EmoteConfused,  OnOffbeat = false, PlayerID = 1 } );
 		}
 
 		if (!TestObject)

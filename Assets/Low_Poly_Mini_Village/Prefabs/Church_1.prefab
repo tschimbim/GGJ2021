@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33904297424161266}
   - component: {fileID: 23355893762898338}
   - component: {fileID: 64337225985734590}
+  - component: {fileID: 109625816636029732}
+  - component: {fileID: 8302491163770075903}
   m_Layer: 0
   m_Name: Church_1
   m_TagString: Untagged
@@ -95,6 +97,38 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 2efab142ea16dc343808953982735a99, type: 3}
+--- !u!114 &109625816636029732
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301707148344532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &8302491163770075903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1301707148344532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed76cede4446d294783c4ba3ad88ebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggersEmote: 1
+  InteractionEmote: 15
 --- !u!1 &6449352899979759790
 GameObject:
   m_ObjectHideFlags: 0

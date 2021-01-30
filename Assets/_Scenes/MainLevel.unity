@@ -20719,6 +20719,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1292212528413186488, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1292212528413186488, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1465377648444098240, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
         type: 3}
       propertyPath: m_Pivot.x
@@ -20828,6 +20838,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: InGameUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465377649938940956, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1465377649938940956, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700916008488885747, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8700916008488885747, guid: 6bd39c7d8fd28974dbba9694da7f0e5f,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6bd39c7d8fd28974dbba9694da7f0e5f, type: 3}
