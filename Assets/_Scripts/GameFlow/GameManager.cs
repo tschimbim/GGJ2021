@@ -108,13 +108,13 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     }
     private void UpdatePostGame()
     {
-        if (PhotonNetwork.IsMasterClient)
-        {
-            myPostGameTimeLeft = Mathf.Clamp((myGameStartedTimestamp + myGameDuration + myPostGameCooldown) - Time.time, 0, myGameDuration);
+        //if (PhotonNetwork.IsMasterClient)
+        //{
+        //    myPostGameTimeLeft = Mathf.Clamp((myGameStartedTimestamp + myGameDuration + myPostGameCooldown) - Time.time, 0, myGameDuration);
 
-            if (myPostGameTimeLeft <= 0.0f)
-                PhotonNetwork.LoadLevel(1);
-        }
+        //    if (myPostGameTimeLeft <= 0.0f)
+        //        PhotonNetwork.LoadLevel(1);
+        //}
     }
     private void UpdateInGame()
     {
