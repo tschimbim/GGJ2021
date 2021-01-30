@@ -27,6 +27,8 @@ public struct EmoteRequest
 
 public class MusicManager : MonoBehaviour
 {
+	public static MusicManager s_Instance;
+
 	private AudioSource MusicSource;
 	private AudioSource AmbientSource;
 
@@ -113,7 +115,7 @@ public class MusicManager : MonoBehaviour
 
 	///////////////////////////////////////////////////////////////////////////
 
-	float GetMusicTime()
+	public float GetMusicTime()
 	{
 		return MusicSource.time;
 	}
@@ -235,6 +237,13 @@ public class MusicManager : MonoBehaviour
 		AudioSource[] sources = GetComponents<AudioSource>();
 		MusicSource		= sources[0];
 		AmbientSource	= sources[1];
+
+		s_Instance = this;
+	}
+
+	private void OnEnable()
+	{
+		s_Instance = this;
 	}
 
 	///////////////////////////////////////////////////////////////////////////
