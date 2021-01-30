@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 33770819408793478}
   - component: {fileID: 23900576288628364}
   - component: {fileID: 65953744655864512}
+  - component: {fileID: 8941763978359727121}
+  - component: {fileID: 2184573254693762644}
   m_Layer: 0
   m_Name: House_2
   m_TagString: Untagged
@@ -94,6 +96,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3.9622893, y: 4.249435, z: 5.6193337}
   m_Center: {x: 0.0000004172325, y: 2.1611307, z: 0.000006198883}
+--- !u!114 &8941763978359727121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637367218074080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &2184573254693762644
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637367218074080}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed76cede4446d294783c4ba3ad88ebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggersEmote: 1
+  InteractionEmote: 2
 --- !u!1 &5098345544413542666
 GameObject:
   m_ObjectHideFlags: 0
