@@ -38,9 +38,10 @@ public class GhostScript : MonoBehaviourPun
             return;
         }
 
-        otherPlayer = GameObject.FindGameObjectWithTag("Player");//.First(go => go.GetPhotonView().Owner != PhotonNetwork.MasterClient);
+        otherPlayer = GameObject.FindGameObjectWithTag("Player");
         if (otherPlayer == null)
         {
+            Debug.LogWarning("Could not find other player!");
             return;
         }
 
