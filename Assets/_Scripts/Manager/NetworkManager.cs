@@ -7,6 +7,7 @@ using Photon.Realtime;
 public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
     public byte maxPlayersForRoom = 2;
+    public bool myDoNotJoinOthers = true;
 
     private string gameVersion = "1";
 
@@ -110,11 +111,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         Debug.Log("... Room join failed!");
 
 #if UNITY_EDITOR
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = maxPlayersForRoom;
-        roomOptions.IsVisible = true;
+        if (myDoNotJoinOthers)
+        {
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.MaxPlayers = maxPlayersForRoom;
+            roomOptions.IsVisible = true;
 
-        PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
+            PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
+        }
+        else
+            JoinRoom();
 #else
         JoinRoom();
 #endif
