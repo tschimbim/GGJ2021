@@ -37,19 +37,25 @@ public class InteractorComponent : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log("Maybe entered: " + other.name);
+
         InteractableComponent interactableComponent = other.GetComponent<InteractableComponent>();
         if (interactableComponent is null || interactableComponent.gameObject == gameObject)
             return;
 
+        if (interactableComponent.TriggersEmote && !GameManager.instance.localIsGhost)
+            return;
+
+        if (!interactableComponent.TriggersEmote && GameManager.instance.localIsGhost)
+            return;
+
+        Debug.Log("Entered trigger: " + other.name);
         interactableList.Add(interactableComponent);
     }
 
     private void OnTriggerExit(Collider other)
     {
         InteractableComponent interactableComponent = other.GetComponent<InteractableComponent>();
-        if (interactableComponent is null || interactableComponent.gameObject == gameObject)
-            return;
-
         interactableList.Remove(interactableComponent);
     }
     #endregion
@@ -86,6 +92,10 @@ public class InteractorComponent : MonoBehaviourPun
         if (interactable.tag == "Bot" && interactable.gameObject == GameManager.instance.targetBot)
         {
             GameManager.instance.photonView.RPC(nameof(GameManager.RegisterBotCatch), RpcTarget.MasterClient, photonView.ViewID);
+        }
+        else if (interactable.TriggersEmote)
+        {
+            GameManager.instance.photonView.RPC(nameof(GameManager.OnEmoteSent), RpcTarget.All, interactable.InteractionEmote);
         }
     }
 }

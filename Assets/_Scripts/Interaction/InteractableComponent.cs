@@ -6,6 +6,9 @@ using UnityEngine;
 [RequireComponent(typeof(Outline))]
 public class InteractableComponent : MonoBehaviour
 {
+    public bool TriggersEmote = false;
+    public Emote InteractionEmote;
+
     //#region Unity References
     //[SerializeField] private Collider myCollider = default;
     //#endregion
