@@ -26,6 +26,12 @@ public class GhostScript : MonoBehaviourPun
             return;
         }
 
+        Invoke("StartGhostView", 1.5f);
+    }
+    #endregion
+
+    void StartGhostView()
+    {
         gameObject.layer = LayerMask.NameToLayer("Ghost");
         gameObject.tag = "Ghost";
 
@@ -51,5 +57,5 @@ public class GhostScript : MonoBehaviourPun
         target.GetComponentInChildren<Renderer>().material = myTargetMaterial;
         GameManager.instance.photonView.RPC(nameof(GameManager.SetTargetBot), RpcTarget.All, target.GetPhotonView().ViewID);
     }
-    #endregion
+
 }
