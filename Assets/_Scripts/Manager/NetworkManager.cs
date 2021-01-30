@@ -63,7 +63,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         Debug.Log("... Connected!");
         State = NetworkState.Online;
-        JoinRoom();
+        JoinRoom(System.Environment.UserName);
     }
 
     public bool IsInRoom()
@@ -76,11 +76,14 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         return State;
     }
 
-    public void JoinRoom()
+    public void JoinRoom(string roomName = null)
     {
         Debug.Log("Join Random Room ...");
         State = NetworkState.SearchingRoom;
-        PhotonNetwork.JoinRandomRoom();
+        if (string.IsNullOrEmpty(roomName))
+            PhotonNetwork.JoinRandomRoom();
+        else
+            PhotonNetwork.JoinRoom(roomName);
     }
 
     public override void OnCreatedRoom()
@@ -105,6 +108,16 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         State = NetworkState.Failed;
         Debug.Log("... Room join failed!");
+
+#if UNITY_EDITOR
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = maxPlayersForRoom;
+        roomOptions.IsVisible = true;
+
+        PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
+#else
+        JoinRoom();
+#endif
     }
 
     public override void OnJoinRandomFailed(short returnCode, string message)
@@ -118,7 +131,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
         roomOptions.MaxPlayers = maxPlayersForRoom;
         roomOptions.IsVisible = true;
 
+#if UNITY_EDITOR
+        PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
+#else
         PhotonNetwork.CreateRoom(null, roomOptions, TypedLobby.Default);    //< create room, let server decide for the name
+#endif
     }
 
     public void Disconnect()
@@ -148,8 +165,5 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     void IOnEventCallback.OnEvent(EventData photonEvent)
     {
         Debug.Log("Received event " + photonEvent.Code);
-
-        switch (photonEvent.Code)
-        { }
     }
 }
