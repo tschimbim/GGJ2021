@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/_Scenes/JonasTestScene.unity
     guid: 722f1e101ccdd2b4ea3daeb84d74b749
+  - enabled: 1
+    path: Assets/_Scenes/MainLevel.unity
+    guid: 5eb282fe8881d214a901c6cad252e3b7
   m_configObjects: {}
