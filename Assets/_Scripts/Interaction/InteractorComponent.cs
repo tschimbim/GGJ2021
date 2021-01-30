@@ -37,8 +37,6 @@ public class InteractorComponent : MonoBehaviourPun
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Maybe entered: " + other.name);
-
         InteractableComponent interactableComponent = other.GetComponent<InteractableComponent>();
         if (interactableComponent is null || interactableComponent.gameObject == gameObject)
             return;
@@ -49,7 +47,6 @@ public class InteractorComponent : MonoBehaviourPun
         if (!interactableComponent.TriggersEmote && GameManager.instance.localIsGhost)
             return;
 
-        Debug.Log("Entered trigger: " + other.name);
         interactableList.Add(interactableComponent);
     }
 

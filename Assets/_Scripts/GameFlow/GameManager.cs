@@ -76,6 +76,7 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     public void SetTargetBot(int viewID)
     {
         targetBot = PhotonNetwork.GetPhotonView(viewID).gameObject;
+        Debug.Log("TargetBot: " + targetBot.name + " ID: " + viewID);
     }
     #endregion
 
