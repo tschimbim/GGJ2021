@@ -279,6 +279,26 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
         type: 3}
+      propertyPath: m_Pitch
+      value: 0.83
+      objectReference: {fileID: 0}
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: MaxDistance
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: DopplerLevel
+      value: 3.78
+      objectReference: {fileID: 0}
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: spreadCustomCurve.m_Curve.Array.data[0].value
+      value: 0.74722224
+      objectReference: {fileID: 0}
+    - target: {fileID: 826692551359377413, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
       propertyPath: reverbZoneMixCustomCurve.m_Curve.Array.data[0].value
       value: 1
       objectReference: {fileID: 0}
