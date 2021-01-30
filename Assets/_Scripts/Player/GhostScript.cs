@@ -38,7 +38,12 @@ public class GhostScript : MonoBehaviourPun
             return;
         }
 
-        otherPlayer = GameObject.FindGameObjectsWithTag("Player").First(go => go.GetPhotonView().Owner != PhotonNetwork.MasterClient);
+        otherPlayer = GameObject.FindGameObjectWithTag("Player");//.First(go => go.GetPhotonView().Owner != PhotonNetwork.MasterClient);
+        if (otherPlayer == null)
+        {
+            return;
+        }
+
         otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
 
         target = FindObjectsOfType<BotScript>().RandomElement().gameObject;
