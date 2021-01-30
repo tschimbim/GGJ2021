@@ -6,6 +6,11 @@ public class InGameMenu : SingletonBase<InGameMenu>
     public GameObject myInGameUI = default;
     public GameObject myPostGameUI = default;
 
+    private void Start()
+    {
+        ShowUI((GameState)(-1));
+    }
+
     public void ShowUI(GameState gameState)
     {
         myPreGameUI.SetActive(gameState == GameState.PreGame);
