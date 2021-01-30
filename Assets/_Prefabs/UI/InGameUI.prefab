@@ -119,12 +119,48 @@ MonoBehaviour:
   myPostGameUI: {fileID: 1465377650139246882}
   myEmoteDataSender:
   - emote: 0
-    sprite: {fileID: 21300000, guid: de5441b58b1d282469765b8028c55564, type: 3}
+    sprite: {fileID: 21300000, guid: a8ab4337a6ec1284baf00db474f66ab5, type: 3}
   - emote: 1
-    sprite: {fileID: 21300000, guid: 5ab758cfe57dff349907c14342b50c03, type: 3}
-  myEmoteDataReceiver:
+    sprite: {fileID: 21300000, guid: 5d213344ba5876a4995e0052f233614f, type: 3}
   - emote: 2
+    sprite: {fileID: 21300000, guid: f016b1ad17777ce49ba8c97c3d68c059, type: 3}
+  - emote: 3
+    sprite: {fileID: 21300000, guid: 2cc2b573d9ac44c4ca808349f7930388, type: 3}
+  - emote: 4
+    sprite: {fileID: 21300000, guid: de5441b58b1d282469765b8028c55564, type: 3}
+  - emote: 5
+    sprite: {fileID: 21300000, guid: f5a870f4b71249f4bbb9bb60ad4bd9ef, type: 3}
+  - emote: 6
+    sprite: {fileID: 21300000, guid: 05f2f096ffe42da47bf6310d0fb7d80a, type: 3}
+  - emote: 7
+    sprite: {fileID: 21300000, guid: 81b877a4f5427014fa2c5c825044a483, type: 3}
+  - emote: 8
+    sprite: {fileID: 21300000, guid: 3f86ede8c28e6124ea11256e7c5ded09, type: 3}
+  - emote: 9
+    sprite: {fileID: 21300000, guid: c3026670037593b4c92b5969ac6d4e8c, type: 3}
+  - emote: 10
+    sprite: {fileID: 21300000, guid: 5ab758cfe57dff349907c14342b50c03, type: 3}
+  - emote: 11
+    sprite: {fileID: 21300000, guid: 195e8e23c677cf9458b19305b88661f2, type: 3}
+  - emote: 12
+    sprite: {fileID: 21300000, guid: 6b84d8ae797e6a44294cf43228c9c334, type: 3}
+  - emote: 13
+    sprite: {fileID: 21300000, guid: a380d4ab34d887647bfbcc1aa38d1b72, type: 3}
+  - emote: 14
+    sprite: {fileID: 21300000, guid: efe6ad974e25b69408ba8c0ca868d6e4, type: 3}
+  - emote: 15
+    sprite: {fileID: 21300000, guid: b53d4c39b30d11a4286cea34456bc8d6, type: 3}
+  - emote: 16
+    sprite: {fileID: 21300000, guid: 3e7775d31009d1c42878f23ff2f6ecaa, type: 3}
+  myEmoteDataReceiver:
+  - emote: 17
     sprite: {fileID: 21300000, guid: 8bd6c5f7e36d75c45a35f4027dd78521, type: 3}
+  - emote: 18
+    sprite: {fileID: 21300000, guid: dbd1f01dbab862e4e983e021f76fed57, type: 3}
+  - emote: 19
+    sprite: {fileID: 21300000, guid: 588c21590607c5a4ab367212f757ba59, type: 3}
+  - emote: 20
+    sprite: {fileID: 21300000, guid: f056a5e35c6afd249b54f11f859e494a, type: 3}
   myEmoteReceiverScript: {fileID: 5415162996043786501}
 --- !u!1 &1465377648625775496
 GameObject:
