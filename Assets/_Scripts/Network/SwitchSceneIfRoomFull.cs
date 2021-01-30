@@ -21,8 +21,18 @@ public class SwitchSceneIfRoomFull : MonoBehaviour
         NetworkManager networkManager = (NetworkManager) FindObjectOfType(typeof(NetworkManager));
         if (networkManager.IsMpReady() && networkManager.IsHost())
         {
-            PhotonNetwork.LoadLevel(targetScene);
             startedRoomSwitch = true;
+
+            Transition transition = (Transition) FindObjectOfType(typeof(Transition));
+            transition.StartTransition(false, 0.6f);
+
+            Invoke("DoChangeLevel", 0.6f);
         }
     }
+
+    void DoChangeLevel()
+    {
+        PhotonNetwork.LoadLevel(targetScene);
+    }
+
 }
