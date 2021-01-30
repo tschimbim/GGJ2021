@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Collider))]
+[RequireComponent(typeof(Outline))]
 public class InteractableComponent : MonoBehaviour
 {
     //#region Unity References
@@ -10,6 +11,11 @@ public class InteractableComponent : MonoBehaviour
     //#endregion
 
     #region Public Methods
+    private void Start()
+    {
+        GetComponent<Outline>().enabled = false;
+    }
+
     public void Interact(InteractorComponent interactor)
     {
 
