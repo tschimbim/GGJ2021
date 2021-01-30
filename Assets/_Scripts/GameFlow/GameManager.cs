@@ -28,6 +28,8 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     /// </summary>
     public GameObject winningPlayer => myWinningPlayerViewId >= 0 ? PhotonNetwork.GetPhotonView(myWinningPlayerViewId).gameObject : null;
 
+    public GameObject targetBot { get; private set; } = default;
+
     public bool localIsGhost => PhotonNetwork.IsMasterClient;
     #endregion
 
@@ -56,11 +58,16 @@ public class GameManager : SingletonPUN<GameManager>, IPunObservable
     }
 
     [PunRPC]
-    public void RegisterPlayerCatch(int viewID)
+    public void RegisterBotCatch(int viewID)
     {
         myWinningPlayerViewId = viewID;
 
         SetGameState(GameState.PostGame);
+    }
+    [PunRPC]
+    public void SetTargetBot(int viewID)
+    {
+        targetBot = PhotonNetwork.GetPhotonView(viewID).gameObject;
     }
     #endregion
 
