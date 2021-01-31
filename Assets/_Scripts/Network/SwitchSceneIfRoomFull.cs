@@ -32,7 +32,8 @@ public class SwitchSceneIfRoomFull : MonoBehaviour
 
     void DoChangeLevel()
     {
+        PhotonNetwork.CurrentRoom.IsOpen = false;
+        PhotonNetwork.CurrentRoom.IsVisible = false;
         PhotonNetwork.LoadLevel(targetScene);
     }
-
 }
