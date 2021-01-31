@@ -10,5 +10,6 @@ public enum NetworkState
     Online,
     SearchingRoom,
     CreatingRoom,
+    LeavingRoom,
     InRoom
 }
