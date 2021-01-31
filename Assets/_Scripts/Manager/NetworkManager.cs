@@ -64,7 +64,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         Debug.Log("... Connected!");
         State = NetworkState.Online;
-        JoinRoom(System.Environment.UserName);
+        //JoinRoom(System.Environment.UserName);
     }
 
     public bool IsInRoom()
@@ -85,6 +85,19 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
             PhotonNetwork.JoinRandomRoom();
         else
             PhotonNetwork.JoinRoom(roomName);
+    }
+
+    public void CreateRoom()
+    {
+        Debug.Log("Create Room with user name...");
+
+        State = NetworkState.CreatingRoom;
+
+        RoomOptions roomOptions = new RoomOptions();
+        roomOptions.MaxPlayers = maxPlayersForRoom;
+        roomOptions.IsVisible = true;
+
+        PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
     }
 
     public override void OnCreatedRoom()
@@ -112,13 +125,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 
 #if UNITY_EDITOR
         if (myDoNotJoinOthers)
-        {
-            RoomOptions roomOptions = new RoomOptions();
-            roomOptions.MaxPlayers = maxPlayersForRoom;
-            roomOptions.IsVisible = true;
-
-            PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
-        }
+            CreateRoom();
         else
             JoinRoom();
 #else
@@ -129,15 +136,26 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     public override void OnJoinRandomFailed(short returnCode, string message)
     {
         Debug.Log("... Random Room join failed.");
-        Debug.Log("Create Random Room ...");
+        CreateRoom();
+    }
 
-        State = NetworkState.CreatingRoom;
+    public override void OnLeftRoom()
+    {
+        State = NetworkState.Online;
+        Debug.Log("... Room left!");
+    }
 
-        RoomOptions roomOptions = new RoomOptions();
-        roomOptions.MaxPlayers = maxPlayersForRoom;
-        roomOptions.IsVisible = true;
+    public void LeaveRoom()
+    {
+        Debug.Log("Network: Trying to levae room ...");
+        if (PhotonNetwork.IsConnected)
+        {
+            Debug.Log("... not Connected");
+        }
 
-        PhotonNetwork.CreateRoom(System.Environment.UserName, roomOptions, TypedLobby.Default);    //< create room for local user name
+        PhotonNetwork.LeaveRoom();
+        State = NetworkState.LeavingRoom;
+        Debug.Log("... leaving room ...");
     }
 
     public void Disconnect()
