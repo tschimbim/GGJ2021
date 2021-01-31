@@ -7,9 +7,8 @@ using Photon.Pun;
 public class SwitchSceneIfRoomFull : MonoBehaviour
 {
     public int targetScene = -1;
-
     private bool startedRoomSwitch = false;
-    
+
     // Update is called once per frame
     void Update()
     {
@@ -18,22 +17,28 @@ public class SwitchSceneIfRoomFull : MonoBehaviour
             return;
         }
 
-        NetworkManager networkManager = (NetworkManager) FindObjectOfType(typeof(NetworkManager));
+        NetworkManager networkManager = (NetworkManager)FindObjectOfType(typeof(NetworkManager));
         if (networkManager.IsMpReady() && networkManager.IsHost())
         {
             startedRoomSwitch = true;
 
-            Transition transition = (Transition) FindObjectOfType(typeof(Transition));
+            Transition transition = (Transition)FindObjectOfType(typeof(Transition));
             transition.StartTransition(false, 0.6f);
 
             Invoke("DoChangeLevel", 0.6f);
         }
     }
 
-    void DoChangeLevel()
+    public void StartGame()
     {
         PhotonNetwork.CurrentRoom.IsOpen = false;
         PhotonNetwork.CurrentRoom.IsVisible = false;
-        PhotonNetwork.LoadLevel(targetScene);
+        startedRoomSwitch = true;
+
+        Transition transition = (Transition)FindObjectOfType(typeof(Transition));
+        transition.StartTransition(false, 0.6f);
+
+        Invoke("DoChangeLevel", 0.6f);
     }
+
 }

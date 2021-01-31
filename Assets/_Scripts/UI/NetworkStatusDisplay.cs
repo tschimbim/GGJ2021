@@ -36,6 +36,9 @@ public class NetworkStatusDisplay : MonoBehaviour
             case NetworkState.InRoom:
                 textDisplay.text = "In Room";
                 break;
+            case NetworkState.LeavingRoom:
+                textDisplay.text = "Leaving Room";
+                break;
         }
     }
 }
