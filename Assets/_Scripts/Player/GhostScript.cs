@@ -15,6 +15,9 @@ public class GhostScript : MonoBehaviourPun
     [SerializeField] private Material mySeekerMaterial = default;
     [SerializeField] private Material myTargetMaterial = default;
 
+    [SerializeField] private GameObject myGhostModel = default;
+    [SerializeField] private GameObject mySeekerModel = default;
+
     [SerializeField, Range(0.0f, 1.0f)] private float mySeekerCamSize = 0.3f;
     #endregion
 
@@ -22,6 +25,9 @@ public class GhostScript : MonoBehaviourPun
     // Start is called before the first frame update
     void Start()
     {
+        myGhostModel.SetActive(isGhost);
+        mySeekerModel.SetActive(!isGhost);
+
         if (!isGhost)
         {
             Destroy(this);
