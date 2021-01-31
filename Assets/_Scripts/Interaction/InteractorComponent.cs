@@ -77,7 +77,7 @@ public class InteractorComponent : MonoBehaviourPun
         }
 
         // Set it active to closest interactable
-        myActiveInteractable = interactableList.OrderBy(interactable => (interactable.transform.position - transform.position).sqrMagnitude).First();
+        myActiveInteractable = interactableList.OrderBy(interactable => (interactable.GetComponent<Collider>().ClosestPoint(transform.position) - transform.position).sqrMagnitude).First();
 
         Outline outline = myActiveInteractable.GetComponent<Outline>();
         if (myOutlineTarget && !(outline is null))
