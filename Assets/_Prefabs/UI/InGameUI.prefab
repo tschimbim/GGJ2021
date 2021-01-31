@@ -302,6 +302,30 @@ MonoBehaviour:
     sprite: {fileID: 21300000, guid: b53d4c39b30d11a4286cea34456bc8d6, type: 3}
   - emote: 16
     sprite: {fileID: 21300000, guid: 3e7775d31009d1c42878f23ff2f6ecaa, type: 3}
+  - emote: 21
+    sprite: {fileID: 21300000, guid: 1de10bdf760f9824d9e2c5b4ab1de0b7, type: 3}
+  - emote: 22
+    sprite: {fileID: 21300000, guid: 6579a9f677ff48e4a94cb402b8fc58e1, type: 3}
+  - emote: 23
+    sprite: {fileID: 21300000, guid: c8e1681587217f140820cd6c7eb463ed, type: 3}
+  - emote: 24
+    sprite: {fileID: 21300000, guid: ebf4d25045845d84391a7a4ba1ab166e, type: 3}
+  - emote: 31
+    sprite: {fileID: 21300000, guid: 1f1be5634ec75684cbbe0101d9d8dd8b, type: 3}
+  - emote: 32
+    sprite: {fileID: 21300000, guid: 54cbef3531f8cef46bbecfe764e37bd4, type: 3}
+  - emote: 25
+    sprite: {fileID: 21300000, guid: ace5214f1307bd6449fec0f2bed0c6a8, type: 3}
+  - emote: 26
+    sprite: {fileID: 21300000, guid: 10b6b2687ef22ae438e2a02dc5948385, type: 3}
+  - emote: 27
+    sprite: {fileID: 21300000, guid: 001e0b0045b34aa4983542fba622f2f6, type: 3}
+  - emote: 28
+    sprite: {fileID: 21300000, guid: b792a7d914b56eb4485d20b09f21293f, type: 3}
+  - emote: 29
+    sprite: {fileID: 21300000, guid: ce6a8b6102ad89c40a99e2fa2fe700ea, type: 3}
+  - emote: 30
+    sprite: {fileID: 21300000, guid: dce6a05d45a116d4c8e08aa92c9b7221, type: 3}
   myEmoteDataReceiver:
   - emote: 17
     sprite: {fileID: 21300000, guid: 8bd6c5f7e36d75c45a35f4027dd78521, type: 3}
