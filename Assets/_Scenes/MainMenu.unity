@@ -24047,7 +24047,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef4d3ee3a3620eb42bff48479096c772, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxPlayersForRoom: 2
+  maxPlayersForRoom: 1
   myDoNotJoinOthers: 0
 --- !u!4 &1598662979
 Transform:
