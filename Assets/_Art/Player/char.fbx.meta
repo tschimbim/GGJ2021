@@ -1,11 +1,11 @@
 fileFormatVersion: 2
-guid: 30c1fbc0a6c4c2f49bb87ece816e7570
+guid: 729141e0d8c22ce42b4d8a1b0a22cb80
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable:
   - first:
-      74: -623603649343465320
-    second: Scene
+      74: 5682670732615437592
+    second: Armature|Walkcycle
   externalObjects: {}
   materials:
     materialImportMode: 1
@@ -26,7 +26,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 3
+    animationCompression: 1
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -37,7 +37,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 0.25
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -76,52 +76,7 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton:
-    - name: amore(Clone)
-      parentName: 
-      position: {x: 0, y: 0, z: 0}
-      rotation: {x: 0, y: 0, z: 0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Char
-      parentName: amore(Clone)
-      position: {x: -0, y: 0, z: 0}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Light
-      parentName: amore(Clone)
-      position: {x: -1.0190613, y: 1.4759655, z: -0.2513635}
-      rotation: {x: 0.52327543, y: -0.34203392, z: 0.72694236, w: 0.28416628}
-      scale: {x: 1, y: 0.99999994, z: 1}
-    - name: Camera
-      parentName: amore(Clone)
-      position: {x: -1.8397229, y: 1.2395773, z: 1.7314477}
-      rotation: {x: 0.09062847, y: 0.89379627, z: -0.20997298, w: 0.3857799}
-      scale: {x: 0.99999994, y: 1, z: 1}
-    - name: Armature
-      parentName: amore(Clone)
-      position: {x: -0.113408364, y: 1.1085665, z: -0.24382785}
-      rotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071067}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Wing.L
-      parentName: Armature
-      position: {x: 7.663455e-34, y: -0.015543333, z: -3.4513133e-18}
-      rotation: {x: -0.63834614, y: 0.0002559051, z: 0.03160803, w: 0.76910025}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Wing.L_end
-      parentName: Wing.L
-      position: {x: -0, y: 0.16066155, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
-    - name: Wing.R
-      parentName: Armature
-      position: {x: 0.22900142, y: -0.01409708, z: -0.0007729167}
-      rotation: {x: -0.63911027, y: -0.009665117, z: -0.020372875, w: 0.7687845}
-      scale: {x: 0.99999994, y: 0.99999994, z: 1}
-    - name: Wing.R_end
-      parentName: Wing.R
-      position: {x: -0, y: 0.15850548, z: 0}
-      rotation: {x: 0, y: -0, z: -0, w: 1}
-      scale: {x: 1, y: 1, z: 1}
+    skeleton: []
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -129,16 +84,16 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 0.25
-    rootMotionBoneName: Armature
+    globalScale: 1
+    rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 1
+    hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 2
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
