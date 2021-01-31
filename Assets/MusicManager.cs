@@ -48,7 +48,11 @@ public enum Emote
 	AbstractUp,
 	AbstractDown,
 	AbstractYes,
-	AbstractNo
+	AbstractNo,
+
+	PinkTree,
+	GreenTree,
+	PineTree
 }
 
 [System.Serializable]
