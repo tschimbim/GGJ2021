@@ -700,17 +700,170 @@ MonoBehaviour:
   MuteImage: {fileID: 2537004888110697100}
   TutorialImage: {fileID: 8171454697981823461}
   EmoteDefinitions:
+  - Emote: 0
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: deeef6644231fa945bdbb29fbf6f71cc, type: 3}
+  - Emote: 1
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 896041c98d3e6354ab79c489575c20bd, type: 3}
+  - Emote: 2
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 23fdb36e701d494429e6cc75ca2d3f2a, type: 3}
+  - Emote: 3
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: f7c64583cc40aa443bd486ae11a8af8f, type: 3}
   - Emote: 4
+    Volume: 1
     Clips:
-    - {fileID: 8300000, guid: a88694859559ac74993b576fa2f09263, type: 3}
+    - {fileID: 8300000, guid: 6d66a3ee968bdaa4d8b68397d3f0d684, type: 3}
+  - Emote: 5
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: ecc614fdf2106c94ca5cee8615599d56, type: 3}
+  - Emote: 6
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 2f319c0f053ba4f438d7479ea8560dda, type: 3}
+  - Emote: 7
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: c8ba5ed1e9d1c314e8c586701599670a, type: 3}
+  - Emote: 8
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 0c307fd67ba70bf4d8e4d60684d4c2b2, type: 3}
+  - Emote: 9
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 43963db7d94d8a84cb62ea58acaf9948, type: 3}
+    - {fileID: 8300000, guid: 0e7b6c1f8314a784e944b77ecc30bd16, type: 3}
   - Emote: 10
+    Volume: 1
     Clips:
-    - {fileID: 8300000, guid: 813a046d5ed927c4ca363fc21ecb6f3b, type: 3}
+    - {fileID: 8300000, guid: a4b99388813321245854104349bc92fc, type: 3}
+  - Emote: 11
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 8dc5025814f60f24e9ad23912380e9c0, type: 3}
+  - Emote: 12
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 7c143a8a6afc41f4cb0c565e7b353bd1, type: 3}
+    - {fileID: 8300000, guid: 6936dd1d893413c45a51e6e4dca00634, type: 3}
+  - Emote: 13
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 364ad93cda45a0a47a95473b0f328c59, type: 3}
+  - Emote: 14
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 710783c1103c73840929145160492d01, type: 3}
+  - Emote: 15
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: ea783343ddf228d4e90ff016fcdf89d0, type: 3}
+  - Emote: 16
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 99894f3ebb62bef42a1531a6281f098e, type: 3}
   - Emote: 17
+    Volume: 1
     Clips:
-    - {fileID: 8300000, guid: 0ef1e23b8ed704f48a7f97b63a29a426, type: 3}
+    - {fileID: 8300000, guid: 3a59154ff308b7e46bb5ac4477386a9f, type: 3}
+    - {fileID: 8300000, guid: 7f3c01b2d3509364085355ab067c4c26, type: 3}
+    - {fileID: 8300000, guid: e43565e036f17d84bb8d2e0f7e34d3c0, type: 3}
+    - {fileID: 8300000, guid: 6fa6329026b31a64d91bcee2bac2afda, type: 3}
+  - Emote: 18
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 0a06a3e47958f62469961d469ca4d3d1, type: 3}
+    - {fileID: 8300000, guid: b45853e2f0213a049b8de431a9bd4042, type: 3}
+    - {fileID: 8300000, guid: c69350a3804405a4bbc03014578e99ad, type: 3}
+    - {fileID: 8300000, guid: 889ac85feb18a844e9b1e397b07c9725, type: 3}
+  - Emote: 19
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 8169220752408954b82b2aa2e60b20df, type: 3}
+    - {fileID: 8300000, guid: adc42cf769cbdf84c9390b69ec295ed2, type: 3}
+    - {fileID: 8300000, guid: 802a0da4e2c02664dbac7858d2287eab, type: 3}
+  - Emote: 20
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 031e2680192402648bf1358c40d9f189, type: 3}
+    - {fileID: 8300000, guid: 5b58f28110637184cac074b7d6d3ed03, type: 3}
+    - {fileID: 8300000, guid: e5fb3cf5ac1d37e4d9c11f2d70d00237, type: 3}
+    - {fileID: 8300000, guid: 7bbcc926b07a0ca40993bcdd1d6f6b51, type: 3}
+    - {fileID: 8300000, guid: fc581aa7be3f6464395a8564e4db584e, type: 3}
+    - {fileID: 8300000, guid: 0617015ca07c5394a9958d566e5f7756, type: 3}
+    - {fileID: 8300000, guid: 8641f930b4186fe43aa77037b2289930, type: 3}
+  - Emote: 21
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: f151b3527f755234e9653298782c6a1d, type: 3}
+  - Emote: 22
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 79503c5fa4c837c48a627baac41a110d, type: 3}
+  - Emote: 23
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 99894f3ebb62bef42a1531a6281f098e, type: 3}
+  - Emote: 24
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 7c2a81d7790adcf41ac5bff4165b57a1, type: 3}
+  - Emote: 25
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 319e91c2d243ea94789bb52e91b62d81, type: 3}
+  - Emote: 26
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 02acbd73357bd7d49b8800e9e0872b26, type: 3}
+  - Emote: 27
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 1be9311e6779da54a9f8f3d8b4d7b1ec, type: 3}
+  - Emote: 28
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 5320db91daacead41884c22678d8ee67, type: 3}
+  - Emote: 29
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 6a110ce9f80a1f04485df4bb8b1f5c4a, type: 3}
+  - Emote: 30
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 2df6c538cd3afe9438fb2a20deb50de9, type: 3}
+  - Emote: 31
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 560a60dba29def74a9e02cee3c62b89d, type: 3}
+  - Emote: 32
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 98b6bcde47a43af43b06458eb97b1a4b, type: 3}
+  - Emote: 33
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: c7a61d6e983b3ea49acad111a93223df, type: 3}
+  - Emote: 34
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 16d4328621636684a93dfdaf9c52835b, type: 3}
+  - Emote: 35
+    Volume: 1
+    Clips:
+    - {fileID: 8300000, guid: 7a807a6a36a29b44e99e89308dbe40be, type: 3}
   IntroAmor: {fileID: 8300000, guid: aaf277cd628ae2546bb21f5ff307a830, type: 3}
   IntroSearcher: {fileID: 8300000, guid: 0b8643eca48647c439cca0697c00178c, type: 3}
+  Impact:
+  - {fileID: 8300000, guid: 140c6ca6d93eb1748bed119ac2211858, type: 3}
 --- !u!1 &8855148018035715491
 GameObject:
   m_ObjectHideFlags: 0
