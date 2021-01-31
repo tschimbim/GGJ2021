@@ -46,21 +46,37 @@ public class GhostScript : MonoBehaviourPun
             return;
         }
 
+        target = FindObjectsOfType<BotScript>().RandomElement().gameObject;
+        if (target != null)
+        {
+            target.gameObject.name = "BOT TARGET!";
+            target.GetComponentInChildren<Renderer>().material = myTargetMaterial;
+
+            Outline outline = target.GetComponent<Outline>();
+            outline.enabled = true;
+            outline.OutlineMode = Outline.Mode.OutlineAll;
+            GameManager.instance.photonView.RPC(nameof(GameManager.SetTargetBot), RpcTarget.All, target.GetPhotonView().ViewID);
+        }
+        else
+        {
+            Debug.LogWarning("Could not find target bot!");
+            return;
+        }
+
         otherPlayer = GameObject.FindGameObjectWithTag("Player");
-        if (otherPlayer == null)
+        if (otherPlayer != null)
+        {
+            otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
+            Camera cam = otherPlayer.GetComponent<ActivateIfMine>().targetObject.GetComponent<Camera>();
+            cam.rect = new Rect(cam.rect.position, Vector2.one * mySeekerCamSize);
+            cam.gameObject.SetActive(true);
+        }
+        else
         {
             Debug.LogWarning("Could not find other player!");
             return;
         }
 
-        otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
-        Camera cam = otherPlayer.GetComponent<ActivateIfMine>().targetObject.GetComponent<Camera>();
-        cam.rect = new Rect(cam.rect.position, Vector2.one * mySeekerCamSize);
-        cam.gameObject.SetActive(true);
-
-        target = FindObjectsOfType<BotScript>().RandomElement().gameObject;
-        target.GetComponentInChildren<Renderer>().material = myTargetMaterial;
-        GameManager.instance.photonView.RPC(nameof(GameManager.SetTargetBot), RpcTarget.All, target.GetPhotonView().ViewID);
     }
 
 }
