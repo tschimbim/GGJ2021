@@ -59,6 +59,7 @@ public enum Emote
 class EmoteDefinition
 {
 	public Emote		Emote;
+	public float		Volume = 1.0f;
 	public AudioClip[]	Clips;
 }
 
@@ -95,6 +96,8 @@ public class MusicManager : MonoBehaviour
 
 	[SerializeField] private AudioClip IntroAmor;
 	[SerializeField] private AudioClip IntroSearcher;
+
+	[SerializeField] private AudioClip[] Impact;
 
 	///////////////////////////////////////////////////////////////////////////
 	
@@ -241,6 +244,7 @@ public class MusicManager : MonoBehaviour
 		float delay = playAt - timeSinceStart;
 
 		PlaySound(clips, delay);
+		PlaySound(Impact, delay);
 
 		if (m_PlayerQueueing.ContainsKey(request.PlayerID))
 		{
