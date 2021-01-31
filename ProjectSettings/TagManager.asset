@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Bot
   - Ghost
+  - MusicCanvas
   layers:
   - Default
   - TransparentFX

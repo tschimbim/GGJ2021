@@ -412,6 +412,23 @@ public class MusicManager : MonoBehaviour
 
 		IntroSource.loop = false;
 
+
+		// hack: destroy self
+		GameObject[] canvases = GameObject.FindGameObjectsWithTag("MusicCanvas");
+
+		if (canvases.Length > 1)
+		{
+			foreach (GameObject canvas in canvases)
+			{
+				if (canvas.GetComponentInChildren<MusicManager>() == this)
+				{
+					Destroy(canvas);
+					return;
+				}
+
+			}
+		}
+
 		s_Instance = this;
 	}
 
