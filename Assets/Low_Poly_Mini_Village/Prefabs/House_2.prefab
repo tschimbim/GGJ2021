@@ -128,7 +128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TriggersEmote: 1
-  InteractionEmote: 16
+  InteractionEmote: 23
 --- !u!1 &5098345544413542666
 GameObject:
   m_ObjectHideFlags: 0
