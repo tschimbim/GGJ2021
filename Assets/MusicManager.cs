@@ -33,7 +33,22 @@ public enum Emote
 	EmoteConfused,
 	EmoteAngry,
 	EmoteIdea,
-	EmoteLol
+	EmoteLol,
+
+	// Can't insert in the middle :( due to the dictionaries used to map the values
+	BlueHouse, 
+	Caravan,
+	WoodenHouse,
+	WaterMill,
+
+	AbstractHot,
+	AbstractCold,
+	AbstractLeft,
+	AbstractRight,
+	AbstractUp,
+	AbstractDown,
+	AbstractYes,
+	AbstractNo
 }
 
 [System.Serializable]

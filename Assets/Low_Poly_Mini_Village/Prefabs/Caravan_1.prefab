@@ -326,6 +326,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4388551147282322}
   - component: {fileID: 65271726992954648}
+  - component: {fileID: 6595642874820922968}
+  - component: {fileID: 6356531864710492876}
   m_Layer: 0
   m_Name: Caravan_1
   m_TagString: Untagged
@@ -365,6 +367,38 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.420012, y: 3.3090968, z: 7.4008865}
   m_Center: {x: -0.007405758, y: 1.937505, z: -0.21584749}
+--- !u!114 &6595642874820922968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589611549968132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fea29bb7c508c244a1f805a5fd3fc4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  outlineMode: 0
+  outlineColor: {r: 1, g: 1, b: 1, a: 1}
+  outlineWidth: 2
+  precomputeOutline: 0
+  bakeKeys: []
+  bakeValues: []
+--- !u!114 &6356531864710492876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1589611549968132}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed76cede4446d294783c4ba3ad88ebbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TriggersEmote: 1
+  InteractionEmote: 22
 --- !u!1 &1600170128961110
 GameObject:
   m_ObjectHideFlags: 0

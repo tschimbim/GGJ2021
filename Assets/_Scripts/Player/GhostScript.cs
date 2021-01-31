@@ -1,4 +1,4 @@
-﻿using Photon.Pun;
+using Photon.Pun;
 using System.Linq;
 using UnityEngine;
 
@@ -14,6 +14,8 @@ public class GhostScript : MonoBehaviourPun
     #region Unity References
     [SerializeField] private Material mySeekerMaterial = default;
     [SerializeField] private Material myTargetMaterial = default;
+
+    [SerializeField, Range(0.0f, 1.0f)] private float mySeekerCamSize = 0.3f;
     #endregion
 
     #region Unity Callbacks
@@ -52,6 +54,9 @@ public class GhostScript : MonoBehaviourPun
         }
 
         otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
+        Camera cam = otherPlayer.GetComponent<ActivateIfMine>().targetObject.GetComponent<Camera>();
+        cam.rect = new Rect(cam.rect.position, Vector2.one * mySeekerCamSize);
+        cam.gameObject.SetActive(true);
 
         target = FindObjectsOfType<BotScript>().RandomElement().gameObject;
         target.GetComponentInChildren<Renderer>().material = myTargetMaterial;
