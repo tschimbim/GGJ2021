@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: -1870695799616268725}
   - component: {fileID: 4622402546780537672}
   - component: {fileID: -1933867591724055239}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bot
   m_TagString: Bot
   m_Icon: {fileID: 0}
@@ -63,7 +63,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 2
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -74,7 +74,7 @@ NavMeshAgent:
   m_Height: 2
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
-  m_ObstacleAvoidanceType: 4
+  m_ObstacleAvoidanceType: 0
 --- !u!135 &2189058560165599983
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -204,7 +204,7 @@ GameObject:
   - component: {fileID: 7844453772819122296}
   - component: {fileID: 1789499340023734543}
   - component: {fileID: 3203619138640746241}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Char
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -433,6 +433,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Footsteps
+      objectReference: {fileID: 0}
+    - target: {fileID: 6073752844191694365, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6073752844191694365, guid: 8e76f3df460e9b1499ff80fa84c0ef47,
         type: 3}
