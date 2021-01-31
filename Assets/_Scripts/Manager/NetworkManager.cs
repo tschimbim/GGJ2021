@@ -3,6 +3,7 @@
 using ExitGames.Client.Photon;
 using Photon.Pun;
 using Photon.Realtime;
+using UnityEngine.SceneManagement;
 
 public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
 {
@@ -143,6 +144,15 @@ public class NetworkManager : MonoBehaviourPunCallbacks, IOnEventCallback
     {
         State = NetworkState.Online;
         Debug.Log("... Room left!");
+
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            SceneManager.LoadScene(0);
+    }
+
+    public override void OnPlayerLeftRoom(Player otherPlayer)
+    {
+        if (SceneManager.GetActiveScene().buildIndex != 0)
+            LeaveRoom();
     }
 
     public void LeaveRoom()

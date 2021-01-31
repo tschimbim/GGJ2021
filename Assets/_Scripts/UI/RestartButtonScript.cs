@@ -14,6 +14,9 @@ public class RestartButtonScript : MonoBehaviour
 
     public void RestartGame()
     {
+        if (startedRoomSwitch)
+            return;
+
         startedRoomSwitch = true;
 
         Transition transition = (Transition)FindObjectOfType(typeof(Transition));
