@@ -355,6 +355,15 @@ MonoBehaviour:
   - emote: 26
     sprite: {fileID: 21300000, guid: 10b6b2687ef22ae438e2a02dc5948385, type: 3}
     isVisibleToSender: 1
+  - emote: 33
+    sprite: {fileID: 21300000, guid: 5b4d2eaca942045449db9930e704a9fd, type: 3}
+    isVisibleToSender: 0
+  - emote: 34
+    sprite: {fileID: 21300000, guid: a8295a7a9839b314ba5df1645de909c2, type: 3}
+    isVisibleToSender: 0
+  - emote: 35
+    sprite: {fileID: 21300000, guid: 1b9819487f00e234b93ceb1bc5162c60, type: 3}
+    isVisibleToSender: 0
   myEmoteDataReceiver:
   - emote: 17
     sprite: {fileID: 21300000, guid: 8bd6c5f7e36d75c45a35f4027dd78521, type: 3}
