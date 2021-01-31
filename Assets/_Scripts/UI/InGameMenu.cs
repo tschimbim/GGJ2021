@@ -8,6 +8,7 @@ public class InGameMenu : SingletonBase<InGameMenu>
     {
         public Emote emote;
         public Sprite sprite;
+        public bool isVisibleToSender;
     }
 
     public Dictionary<Emote, Sprite> emoteDict { get; private set; } = new Dictionary<Emote, Sprite>();
