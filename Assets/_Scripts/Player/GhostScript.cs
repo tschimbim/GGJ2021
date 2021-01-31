@@ -18,6 +18,7 @@ public class GhostScript : MonoBehaviourPun
     [SerializeField] private GameObject myGhostModel = default;
     [SerializeField] private GameObject mySeekerModel = default;
 
+    [SerializeField] private bool myShowSeekerCam = false;
     [SerializeField, Range(0.0f, 1.0f)] private float mySeekerCamSize = 0.3f;
     #endregion
 
@@ -73,9 +74,13 @@ public class GhostScript : MonoBehaviourPun
         if (otherPlayer != null)
         {
             otherPlayer.GetComponentInChildren<Renderer>().material = mySeekerMaterial;
-            Camera cam = otherPlayer.GetComponent<ActivateIfMine>().targetObject.GetComponent<Camera>();
-            cam.rect = new Rect(cam.rect.position, Vector2.one * mySeekerCamSize);
-            cam.gameObject.SetActive(true);
+
+            if (myShowSeekerCam)
+            {
+                Camera cam = otherPlayer.GetComponent<ActivateIfMine>().targetObject.GetComponent<Camera>();
+                cam.rect = new Rect(cam.rect.position, Vector2.one * mySeekerCamSize);
+                cam.gameObject.SetActive(true);
+            }
         }
         else
         {
