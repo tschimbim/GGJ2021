@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public enum Emote
@@ -55,6 +56,13 @@ public class MusicManager : MonoBehaviour
 
 	private AudioSource MusicSource;
 	private AudioSource AmbientSource;
+	private AudioSource IntroSource;
+	private AudioSource MusicSourceHelper;
+
+	public AudioMixerGroup mixerGroup;
+
+	[SerializeField] private float		MusicVolumeDuringIntro = 0.6f;
+	private float MusicVolumeDefault;
 
 	[SerializeField] private Sprite		LoudSprite;
 	[SerializeField] private Sprite		MutedSprite;
@@ -62,13 +70,98 @@ public class MusicManager : MonoBehaviour
 	[SerializeField] private GameObject	TestObject;
 
 	[SerializeField] private Image MuteImage;
+	[SerializeField] private Image TutorialImage;
 
 	[SerializeField] List<EmoteDefinition> EmoteDefinitions;
+
+	[SerializeField] private AudioClip IntroAmor;
+	[SerializeField] private AudioClip IntroSearcher;
 
 	///////////////////////////////////////////////////////////////////////////
 	
 	Dictionary<int, float> m_SuppressPlayerInputUntil	= new Dictionary<int, float>();
 	Dictionary<int, EmoteRequest> m_PlayerQueueing		= new Dictionary<int, EmoteRequest>();
+
+	///////////////////////////////////////////////////////////////////////////
+
+	void StartIntro(bool amor)
+	{
+		IntroSource.clip = amor ? IntroAmor : IntroSearcher;
+		IntroSource.Stop();
+		IntroSource.Play();
+		IntroSource.loop = false;
+
+		float musicTime = GetMusicTime();
+
+		float neededHeadroom = 1.0f;
+		float preDelayTotal = 4.0f;
+
+		// 
+		// |-------------------------------|									(pre delay total)
+		//						       |---|									(headroom)
+		// X               X               O               X			   X    (next two seconds)
+		//                  cur--v     
+		// |o o o o|o o o o|o o o o|o o o o|o o o o|o o o o|o o o o|o o o o|o o o o|
+		// ^-------^
+		//    1s
+
+		float twoSeconds = 4.0f;
+
+		int currentTwoSeconds			= (int) (musicTime / twoSeconds);
+		float currentTwoSecondTime		= currentTwoSeconds * twoSeconds;
+		float currentToSecondOffset		= musicTime - currentTwoSecondTime;
+
+		int earlieastTwoSecondsToStart	= (int) ((musicTime + neededHeadroom) / twoSeconds) + 1;
+		float startOnBeatAbs				= earlieastTwoSecondsToStart * twoSeconds;
+		float startTrack					= startOnBeatAbs - preDelayTotal;
+		
+		float introTrackOffset = musicTime - startTrack;
+
+		float mainTrackOnBeatAfterSeconds		= 16.0f;
+		float mainTrackOffsetForFullPreDelay	=  mainTrackOnBeatAfterSeconds - preDelayTotal;
+		float mainTrackOffset					= mainTrackOffsetForFullPreDelay + introTrackOffset;
+
+		IntroSource.time		= introTrackOffset;
+		MusicSource.time		= musicTime;
+
+		MusicSourceHelper.Play();
+		MusicSourceHelper.loop = true;
+		MusicSourceHelper.time	= mainTrackOffset;
+		MusicSourceHelper.mute = true;
+	}
+
+	void UpdateIntroTracks()
+	{
+		if (IntroSource.isPlaying && MusicSourceHelper.mute && MusicSourceHelper.isPlaying)
+		{
+			float switchTrackAfter = 4.0f - 0.75f;
+			switchTrackAfter += Time.deltaTime;
+
+			if (IntroSource.time > switchTrackAfter)
+			{
+				MusicSourceHelper.mute = false;
+				MusicSource.mute = true;
+				MusicSource.Stop();
+
+				AudioSource tmp = MusicSource;
+				MusicSource = MusicSourceHelper;
+				MusicSourceHelper = tmp;
+			}
+		}
+
+		float musicSourceTargetVolume = IntroSource.isPlaying ? MusicVolumeDuringIntro : MusicVolumeDefault;
+
+		
+		MusicSource.volume			= Mathf.Lerp(MusicSource.volume, musicSourceTargetVolume, 0.025f);
+		MusicSourceHelper.volume	= MusicSource.volume;
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	void Stopintro()
+	{
+		IntroSource.Stop();
+	}
 
 	///////////////////////////////////////////////////////////////////////////
 
@@ -166,6 +259,11 @@ public class MusicManager : MonoBehaviour
 			TryPlayEmote(new EmoteRequest(){ Emote = Emote.EmoteConfused,  OnOffbeat = false, PlayerID = 1 } );
 		}
 
+		if (Input.GetKey(KeyCode.Alpha4))
+		{
+			StartIntro(true);
+		}
+
 		if (!TestObject)
 		{
 			return;
@@ -201,6 +299,10 @@ public class MusicManager : MonoBehaviour
 		{
 			TryPlayEmote(m_PlayerQueueing[key]);
 		}
+
+		TutorialImage.color = IntroSource.isPlaying ? Color.yellow : Color.white;
+
+		UpdateIntroTracks();
 	}
 
 	///////////////////////////////////////////////////////////////////////////
@@ -246,6 +348,7 @@ public class MusicManager : MonoBehaviour
 		audioSource.volume					= finalVolume;
 		audioSource.dopplerLevel			= 0.0f;
 		audioSource.spatialBlend			= force2DSound ? 0.0f : amount3D;
+		audioSource.outputAudioMixerGroup	= MusicSource.outputAudioMixerGroup;
 
 		audioSource.PlayDelayed(delay);
 
@@ -259,8 +362,20 @@ public class MusicManager : MonoBehaviour
 	public void Awake()
 	{
 		AudioSource[] sources = GetComponents<AudioSource>();
-		MusicSource		= sources[0];
-		AmbientSource	= sources[1];
+		MusicSource			= sources[0];
+		AmbientSource		= sources[1];
+		IntroSource			= sources[2];
+		MusicSourceHelper	= sources[3];
+
+		MusicSourceHelper.volume	= MusicSource.volume;
+		MusicSourceHelper.clip		= MusicSource.clip;
+		MusicSourceHelper.mute		= true;
+
+		MusicVolumeDefault = MusicSource.volume;
+
+		mixerGroup = MusicSource.outputAudioMixerGroup;
+
+		IntroSource.loop = false;
 
 		s_Instance = this;
 	}
@@ -272,12 +387,47 @@ public class MusicManager : MonoBehaviour
 
 	///////////////////////////////////////////////////////////////////////////
 
+	bool IsMuted()
+	{
+		float volume;
+		mixerGroup.audioMixer.GetFloat("Volume", out volume);
+
+		bool isMuted = volume < -40.0f;
+		return isMuted;
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
 	public void ToggleMuteMusic()
 	{
-		bool isMuted = !MusicSource.mute;
-		MusicSource.mute = isMuted;
-		AmbientSource.mute = isMuted;
+		bool isMuted = IsMuted();
+		isMuted = !isMuted;
+
 		MuteImage.sprite = isMuted ? MutedSprite : LoudSprite;
+
+		mixerGroup.audioMixer.SetFloat("Volume", isMuted ? -80.0f : -0.03f);
+	}
+
+	///////////////////////////////////////////////////////////////////////////
+
+	public void ToggleTutorial()
+	{
+		bool isPlaying = IntroSource.isPlaying;
+
+		if (isPlaying)
+		{
+			Stopintro();
+		}
+		else
+		{
+			bool isAmor = GameManager.instance ? GameManager.instance.localIsGhost : true;
+			StartIntro(isAmor);
+
+			if (IsMuted())
+			{
+				ToggleMuteMusic();
+			}
+		}
 	}
 
 	///////////////////////////////////////////////////////////////////////////
