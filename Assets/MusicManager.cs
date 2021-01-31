@@ -106,13 +106,8 @@ public class MusicManager : MonoBehaviour
 
 	///////////////////////////////////////////////////////////////////////////
 
-	void StartIntro(bool amor)
+	void StartIntro(bool amor, bool useShortVersion)
 	{
-		IntroSource.clip = amor ? IntroAmor : IntroSearcher;
-		IntroSource.Stop();
-		IntroSource.Play();
-		IntroSource.loop = false;
-
 		float musicTime = GetMusicTime();
 
 		float neededHeadroom = 1.0f;
@@ -127,7 +122,7 @@ public class MusicManager : MonoBehaviour
 		// ^-------^
 		//    1s
 
-		float twoSeconds = 4.0f;
+		float twoSeconds = useShortVersion ? 2.0f : 4.0f;
 
 		int currentTwoSeconds			= (int) (musicTime / twoSeconds);
 		float currentTwoSecondTime		= currentTwoSeconds * twoSeconds;
@@ -139,9 +134,20 @@ public class MusicManager : MonoBehaviour
 		
 		float introTrackOffset = musicTime - startTrack;
 
+		if (introTrackOffset < 0 && !useShortVersion)
+		{
+			StartIntro(amor, true);
+			return;
+		}
+
 		float mainTrackOnBeatAfterSeconds		= 16.0f;
 		float mainTrackOffsetForFullPreDelay	=  mainTrackOnBeatAfterSeconds - preDelayTotal;
 		float mainTrackOffset					= mainTrackOffsetForFullPreDelay + introTrackOffset;
+
+		IntroSource.clip = amor ? IntroAmor : IntroSearcher;
+		IntroSource.Stop();
+		IntroSource.Play();
+		IntroSource.loop = false;
 
 		IntroSource.time		= introTrackOffset;
 		MusicSource.time		= musicTime;
@@ -284,7 +290,13 @@ public class MusicManager : MonoBehaviour
 
 		if (Input.GetKey(KeyCode.Alpha4))
 		{
-			StartIntro(true);
+			StartIntro(true, false);
+		}
+
+		
+		if (Input.GetKey(KeyCode.Alpha5))
+		{
+			MusicSource.time = MusicSource.clip.length * 0.9f;
 		}
 
 		if (!TestObject)
@@ -444,7 +456,7 @@ public class MusicManager : MonoBehaviour
 		else
 		{
 			bool isAmor = GameManager.instance ? GameManager.instance.localIsGhost : true;
-			StartIntro(isAmor);
+			StartIntro(isAmor, false);
 
 			if (IsMuted())
 			{
