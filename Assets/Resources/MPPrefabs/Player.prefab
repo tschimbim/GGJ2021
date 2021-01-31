@@ -430,6 +430,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mySeekerMaterial: {fileID: 2100000, guid: 3487bb8e569e9c54f9ec0fc126111bf3, type: 2}
   myTargetMaterial: {fileID: 2100000, guid: 72a171f7495f3854083d6ee0ef6b5a18, type: 2}
+  mySeekerCamSize: 0.3
 --- !u!54 &3594969065352701629
 Rigidbody:
   m_ObjectHideFlags: 0
