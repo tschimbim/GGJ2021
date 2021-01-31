@@ -28,6 +28,8 @@ public class Footsteps : MonoBehaviour
 		m_AudioSource = GetComponent<AudioSource>();
 
 		m_LastFootstep = Time.realtimeSinceStartup + 1.0f + Random.Range(0.0f, m_Frequency);
+
+		m_AudioSource.pitch = Random.Range(0.75f, 1.5f);
 	}
 
 	private void Update()
